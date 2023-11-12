@@ -5,15 +5,15 @@ Spinoff of todolist application available at https://github.com/a2975667/flask-g
 
 ```
 python
-podman/docker/... 
+podman 
 ```
 
 ## Getting started
 
 ## Get the code
 ```bash
-git clone https://github.com/a2975667/flask-gcp-mysql-demo.git
-cd flask-mysql-todolist
+git clone https://github.com/brochwerger/todolist-flask
+cd todolist-flask
 ```
 
 ## Run mysql server (as a local container) 
