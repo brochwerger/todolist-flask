@@ -12,26 +12,25 @@ podman
 
 ## Get the code
 ```bash
-git clone https://github.com/brochwerger/todolist-flask
+git clone -b containerize https://github.com/brochwerger/todolist-flask
 cd todolist-flask
 ```
+
+## Create network for local servcies to communicate
+podman network mynet
 
 ## Run mysql server (as a local container) 
 ```bash
 podman run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=<your-choice-of-password> --name mysql mysql
 ```
 
-<!-- ## Create and initialize database
+# Build container image
 ```bash
-mysql -uroot -ppassw0rd --host=localhost < init.sql
-``` -->
+podman build -t todolist .
+```
 
-## Run the application (locally)
+# Run application as local container
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-source env.sh
-python main.py
+podman run --network=host -e MYSQL_USER=root -e MYSQL_PASSWORD=<your-choice-of-password> -e MYSQL_DB=todo -e MYSQL_HOST=127.0.1.1 --name todolist todolist
 ```
